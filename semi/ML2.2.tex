@@ -182,7 +182,7 @@ f'(x) = f(x)(1 - f(x))
  $\mu \in M(I_n)$ とします。もし $\mu$ がすべての超平面と $\mathbb{R}^n$ の開半空間で0になるなら、$\mu$ は0です。すなわち、以下が成り立つとき、
 
 \[
-\mu(P_{\mathbf{w},\theta}) = 0, \quad \mu(\mathcal{H}_{w,\theta}) = 0, \quad \forall w \in \mathbb{R}^n, \, \theta \in \mathbb{R},
+\mu(P_{\mathbf{w},\theta}) = 0, \quad \mu(\mathcal{H}_{\mathbf{w},\theta}) = 0, \quad \forall \mathbf{w} \in \mathbb{R}^n, \, \theta \in \mathbb{R},
 \]
 そのとき $\mu = 0$ です。
 
@@ -192,7 +192,7 @@ $\mathbf{w} \in \mathbb{R}^n$ を固定します。次のように定義され�
 \[
 F(h) = \int_{I_n} h(\mathbf{w}^T x) d\mu(x),
 \]
-ここで $L^\infty(\mathbb{R})$ はほぼ至る所($\mathrm{almost every}\mathbf{w}here\iff$ a.e.)で有界な関数の空間を表します。\\
+ここで $L^\infty(\mathbb{R})$ はほぼ至る所($\mathrm{almost everywhere}\iff$ a.e.)で有界な関数の空間を表します。\\
 $L^{\infty}(\mathbb{R})$ の元 $h$ は、$\mathbb{R}$ 上の有界な関数であり、$||h||_\infty = \text{ess}\displaystyle\sup_{x \in \mathbb{R}} |h(x)|\footnote{ess supを本質的上限と呼ばれ、定義は以下のようになります。
 \[
 (X,\mathcal{F},\mu) \text{ を測度空間, } f:X \to \mathbb{R} \text{ を可測関数とする. このとき,}
@@ -312,7 +312,7 @@ $f(x_1) = f(x_2) \implies x_1 = x_2$}性質から、$\mu = 0$ が成り立つ。
 \begin{proof}
 $\mu \in M(I_n)$ を固定された測度とする。以下の条件を満たす連続シグモイド $\sigma$ を選ぶ：
 \begin{equation}
-  \int_{I_n} \sigma(w^T x + \theta)d\mu(x) = 0, \quad \forall w \in \mathbb{R}^n, \theta \in \mathbb{R}.\label{eq2}
+  \int_{I_n} \sigma(\mathbf{w}^T x + \theta)d\mu(x) = 0, \quad \forall \mathbf{w} \in \mathbb{R}^n, \theta \in \mathbb{R}.\label{eq2}
 \end{equation}
 $\mu=0$を証明すればいい。まず、以下の関数を構成すると、
 \[
@@ -343,8 +343,8 @@ $\sigma_\lambda(x) \to \gamma(x)\quad (\lambda\to\infty)$ は $\mathbb{R}^n$ 上
 有界収束定理より、極限と積分の交換ができる。よって、
 \begin{align}
   \lim_{\lambda \to \infty} \int_{I_n} \sigma_\lambda(x) d\mu(x) &= \int_{I_n} \gamma(x) d\mu(x)\notag\\
-  &= \int_{\mathcal{H}^+_{w,\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{H}^-_{w,\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{P}_{w,\theta}} \gamma(x) d\mu(x) \notag\\
-  &= \mu(\mathcal{H}^+_{w,\theta}) + \sigma(\phi) \mu(\mathcal{P}_{w,\theta})\notag
+  &= \int_{\mathcal{H}^+_{\mathbf{w},\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{H}^-_{\mathbf{w},\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{P}_{\mathbf{w},\theta}} \gamma(x) d\mu(x) \notag\\
+  &= \mu(\mathcal{H}^+_{\mathbf{w},\theta}) + \sigma(\phi) \mu(\mathcal{P}_{\mathbf{w},\theta})\notag
 \end{align}
 
 
@@ -355,7 +355,7 @@ $\sigma_\lambda(x) \to \gamma(x)\quad (\lambda\to\infty)$ は $\mathbb{R}^n$ 上
 等式\eqref{eq2}より、 $\int_{I_n} \sigma_\lambda(x) d\mu(x)=0,\forall \lambda $となるので、
 
 \[
-\mu(\mathcal{H}^+_{w,\theta}) + \sigma(\phi)\mu(\mathcal{P}_{\mathbf{w},\theta}) = 0
+\mu(\mathcal{H}^+_{\mathbf{w},\theta}) + \sigma(\phi)\mu(\mathcal{P}_{\mathbf{w},\theta}) = 0
 \]
 $\phi \to +\infty$ とすると、$\sigma = \dfrac{1}{1+e^{-\phi}}\to 1$より、
 
