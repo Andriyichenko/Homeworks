@@ -36,11 +36,17 @@
 \maketitle
 %%%概要を出力したい人はこのように記述
 \vspace{-0.4cm}
-\begin{tikzpicture}[remember picture, overlay]
-  \node[anchor=north east] at (current page.north east) {
-  \includegraphics[width=2cm]{pics/p1.1.png} % 替换为你的图片文件
-  };
-\end{tikzpicture}
+\begin{figure}[H] % 使用 figure 环境
+  \centering
+  \begin{tikzpicture}[remember picture, overlay]
+      \node[anchor=north east] at (current page.north east) {
+          \includegraphics[width=2cm]{pics/qr.png} % 替换为你的图片文件
+      };
+      % 添加说明文字在二维码的正下方
+      \node[anchor=north east, yshift=-2cm] at (current page.north east) {デジタル版はここ};
+  \end{tikzpicture}
+  \label{fig:my_label}
+\end{figure}
 \begin{dfn}[シグモイド関数]
 シグモイド関数 $\sigma(x):\mathbb{R}\to [0,1] $ は、次のように定義される。
 \begin{equation}
