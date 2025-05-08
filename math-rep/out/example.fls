@@ -1,0 +1,4 @@
+PWD /Users/andriyichenko/Documents/VScode/Latex/math-rep
+INPUT /usr/local/texlive/2023/texmf-var/web2c/luahbtex/lualatex.fmt
+INPUT /Users/andriyichenko/Documents/VScode/Latex/math-rep/example.tex
+OUTPUT out/example.log

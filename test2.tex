@@ -1,0 +1,73 @@
+\documentclass{article} % ドキュメントクラスを指定  
+\usepackage[dvipdfmx]{graphicx}  
+\usepackage{tikz} % 図を描くためのパッケージ  
+\usepackage{enumerate}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+
+
+
+
+
+\usetikzlibrary{positioning, intersections, calc, arrows.meta, math} % tikzのlibraryを読み込み  
+
+\begin{document} % ドキュメント開始  
+% \begin{center}  
+% \begin{tikzpicture}[scale=1,samples=300]  
+%   \draw[->,>=stealth,semithick] (-4,0)--(4,0) node[right]{$x$}; %x軸
+%   \draw[->,>=stealth,semithick] (0,-3)--(0,3) node[left]{$y$}; %y軸
+%   \draw (0,0) node[below left]{O}; %原点
+%   \begin{scope} \clip (-4,-3) rectangle (4,3);
+%     \draw[thick] plot(\x,{sin(\x r)});
+%     \draw[thick] plot(\x,{pow(\x,2)});
+%     \draw[thick] plot(\x,\x);
+%   \end{scope}  
+% \draw ({-sqrt(3)},3) node[above]{$y=x^2$};
+% \draw (3,3) node[right]{$y=x$};
+% \draw (4,{sin(4 r)}) node[below]{$y=\sin x$};
+
+% \begin{tikzpicture}[scale=1]
+
+%   \draw (-1,2) node[left]{A} -- (3,3) node[right]{B};
+%   \draw (-1,2) -- (4,1) node[right]{C};
+%   \draw (-1,2) -- (3,0) node[right]{D};
+%   \draw (-1,2) -- (1,-2) node[right]{E};
+  
+% \end{tikzpicture} 
+% \noindent\textgt{【例題】}\par
+% 次の2次方程式を解け。\vspace{-8pt}
+% \begin{enumerate}[(1)\;]
+%   \item $x^2=1$
+%   \item $x^2-4x+1=0$
+% \end{enumerate}
+% \noindent\textgt{（解答）}\par
+% (1)\quad $x=\pm 1$ \qquad
+% (2)\quad $x=2 \pm \sqrt{3}$
+
+% \end{tikzpicture}
+% \end{center}  
+\noindent\textgt{【例題】}\par
+次の2次方程式を解け。\vspace{-8pt}
+\begin{enumerate}[(1)\;]
+  \item $x^2=1$
+  \item $x^2-4x+1=0$
+\end{enumerate}
+\noindent\textgt{（解答）}\par
+(1)\quad $x=\pm 1$ \qquad
+(2)\quad $x=2 \pm \sqrt{3}$
+
+\begin{align*}
+\mathbb{V}[\pi'\bm{\tilde{R}}]&=\mathbb{E}[(\pi'\bm{\tilde{R}}-\pi'\mathbb{E}[\tilde{R}])(\pi'\bm{\tilde{R}}-\pi'\mathbb{E}[\bm{\tilde{R}}])']\\
+  
+&=\pi'\mathbb{E}[(\bm{\tilde{R}}-\mathbb{E}[\bm{\tilde{R}}])(\bm{\tilde{R}}-\mathbb{E}[\bm{\tilde{R}}])'](\pi')'\\
+  
+&=\pi'\mathbb{E}[(\bm{\tilde{R}}-\mathbb{E}[\bm{\tilde{R}}])(\bm{\tilde{R}}-\mathbb{E}[\bm{\tilde{R}}])']\pi\\
+  
+  
+  
+  
+  
+\end{align*}
+
+
+\end{document} % ドキュメント終了

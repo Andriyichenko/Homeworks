@@ -1,0 +1,7 @@
+This is LuaHBTeX, Version 1.16.0 (TeX Live 2023)  (format=lualatex 2023.7.2)  17 DEC 2024 06:48
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**/Users/andriyichenko/Documents/VScode/Latex/math-rep/example.tex
+(
+/Users/andriyichenko/Documents/VScode/Latex/math-rep/example.tex:0: error:  (file io): fflush() failed (Broken pipe)
+/Users/andriyichenko/Documents/VScode/Latex/math-rep/example.tex:0:  ==> Fatal error occurred, no output PDF file produced!
