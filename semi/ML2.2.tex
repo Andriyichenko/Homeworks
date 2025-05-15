@@ -1,53 +1,24 @@
-\documentclass[a4paper]{jsarticle}
-\usepackage{amsmath,amsfonts,amssymb,amsthm}
-\usepackage{mathtools}
-\usepackage{xcolor}
-\usepackage{otf}
-\usepackage{xspace}
-\usepackage{newpxtext}
-\usepackage{empheq,cases}
-\usepackage[absolute]{textpos}
-\usepackage{qrcode}
-% \usepackage{epstopdf} % For handling bounding box issue
-\usepackage[dvipdfmx]{graphicx} % For including graphics
-\usepackage{float}
-% \renewcommand{\abstractname}{注意事項}
-% \renewcommand{\proofname}{\textbf{証明}}
-% \renewcommand{\qed}{\unskip\nobreak\quad\qedsymbol}
-\newtagform{textbf}[\textbf]{[}{]}
-\usetagform{textbf}
-\newcommand*{\ie}{\textbf{\textit{i.e.}}\@\xspace}
-\theoremstyle{definition}
-\newtheorem{dfn}{Definition}
-\newtheorem{prop}[dfn]{Proposition}
-\newtheorem{lem}[dfn]{Lemma}
-\newtheorem{thm}[dfn]{Theorem}
-\newtheorem{cor}[dfn]{Corollary}
-\newtheorem{rem}[dfn]{Remark}
-\newtheorem{fact}[dfn]{Fact}
-\renewcommand{\qedsymbol}{$\blacksquare$}
-\usepackage{lipsum} % 用于生成示例文本
-\usepackage{float} % 强制浮动
-\usepackage{tikz} % 用于定位
-\title{\vspace{-4cm}\S 2.2\quad Sigmoidal Function}
-\author{伊 冉(Andre YI)}
-\date{\today}
+\documentclass[a4paper]{jsarticle}%pLatexでコンパイルしてください
+\usepackage{ml2.2}
+
 \begin{document}
 \maketitle
 %%%概要を出力したい人はこのように記述
 \vspace{-0.4cm}
-\begin{figure}[H] % 使用 figure 环境
+\begin{figure}[H] 
   \centering
   \begin{tikzpicture}[remember picture, overlay]
       \node[anchor=north east] at (current page.north east) {
-          \includegraphics[width=2cm]{pics/qr.png} % 替换为你的图片文件
+          \includegraphics[width=2cm]{pics/qr.png} 
       };
-      % 添加说明文字在二维码的正下方
       \node[anchor=north east, yshift=-2cm] at (current page.north east) {デジタル版はここ};
   \end{tikzpicture}
   \label{fig:my_label}
 \end{figure}
+\section{\textbf{Sigmoidal Function}}
+\thispagestyle{plain}
 \begin{dfn}[シグモイド関数]
+\addcontentsline{toc}{subsubsection}{定義}
 Logistic関数 $\sigma(x):\mathbb{R}\to [0,1] $ は、次のように定義される。
 \begin{equation}
   \sigma(x) = \frac{1}{1 + e^{-x}} \quad (x \in \mathbb{R})\label{eq1}
@@ -59,25 +30,27 @@ Logistic関数 $\sigma(x):\mathbb{R}\to [0,1] $ は、次のように定義さ�
   \begin{minipage}{0.43\columnwidth}
     \centering
     \includegraphics[width=\columnwidth]{pics/p1.2.png}
-    \caption{シグモイド関数}
+    \caption{Logistic関数}
     \label{fig:p1}
   \end{minipage}
   \hspace{5mm}
   \begin{minipage}{0.43\columnwidth}
     \centering
     \includegraphics[width=\columnwidth]{pics/p1.1.png}
-    \caption{シグモイド関数の1階微分}
+    \caption{Logistic関数の1階微分}
     \label{fig:p2}
   \end{minipage}
 \end{figure}
-\begin{lem}
-シグモイド関数が微分可能である
+\begin{exercise}
+  以上のLogistic関数が微分可能であることを示せ。
+\end{exercise}
+
 \begin{proof}
 まず、関数の微分は次の定義によって与えられます：
 \[
 f'(x) = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}
 \]
-この定義を用いて、シグモイド関数の微分を計算すると、次のようになります：\\
+この定義を用いて、Logistic関数の微分を計算すると、次のようになります：\\
 まず、\(f(x + h)\)と\(f(x)\)を計算します：
 \[
 f(x + h) = \frac{1}{1 + e^{-(x + h)}} = \frac{1}{1 + e^{-x} e^{-h}} = \frac{1}{1 + \frac{e^{-x}}{e^{h}}}
@@ -137,14 +110,14 @@ e^{-x} = (1 + e^{-x}) \cdot (1 - f(x))
 \[
 f'(x) = \frac{(1 + e^{-x})(1 - f(x))}{(1 + e^{-x})^2} = f(x)(1 - f(x))
 \]
-したがって、シグモイド関数の微分は次のように表されます：
+
+したがって、Logistic関数の微分は次のように表されます：
 \[
 f'(x) = f(x)(1 - f(x))
 \]
 
 
 \end{proof}
-\end{lem}
 \end{dfn}
 
 \begin{rem}
@@ -153,11 +126,12 @@ f'(x) = f(x)(1 - f(x))
   結果として、積分 $\int f(x) d\mu(x)$ は、判定のシステム $\mu$ の下での関数 $f(x)$ の評価を表します。
   
 \end{rem}
+\section{\textbf{Discriminatory Function}}
 
 \begin{dfn}[Discriminatory Function]
   この定義は、区別関数(Discriminatory Function)の概念を導入します。
   これは以下の特性によって特徴づけられます。
-  すなわち、ニューロンの出力の評価 $\sigma(\mathbf{w}^T x + \theta)$ が、任意の入力 $x$ に対して、測度 $\mu$ の下で、任意の閾値 $\theta$ と任意の重み $\mathbf{w}$ に対して消失する場合、$\mu$ は消失しなければなりません。
+  すなわち、ニューロンの出力の評価 $\sigma(\mathbf{w}^T x + \theta)$ が、任意の入力 $x$ に対して、測度 $\mu$ の下で、任意の閾値 $\theta$ と任意の重み $\mathbf{w}$ に対してなくなると、$\mu$ も絶対なくなる。
   つまり、$\mu$ は無効な測度です。\\
   次に、測度$\mu \in M(I_n)$ とします。関数 $\sigma$ が測度 $\mu$ に対して区別的であるとは、次の条件を満たす場合に呼ばれます：
 
@@ -165,7 +139,7 @@ f'(x) = f(x)(1 - f(x))
   \int_{I_n} \sigma(\mathbf{w}^T x + \theta)d\mu(x) = 0, \, \forall \mathbf{w} \in \mathbb{R}^n, \, \forall \theta \in \mathbb{R} \Rightarrow \mu = 0.
   \]
   ここで、関数 $\sigma$ は必ずしもLogistic関数である必要はなく、必要な特性を満たす任意の関数で構いません。
-  $P_{\mathbf{w},\theta} = \{x; \mathbf{w}^T x + \theta = 0\}$ を法線ベクトル $\mathbf{w}$ と $(n+1)$ 次の切片 $\theta$ を持つ超平面(hyperplane)とします。また、開半空間(open half-space)を次のように定義します。
+  $\mathcal{P}_{\mathbf{w},\theta} = \{x; \mathbf{w}^T x + \theta = 0\}$ を法線ベクトル $\mathbf{w}$ と $(n+1)$ 次の切片 $\theta$ を持つ超平面(hyperplane)とします。また、開半空間(open half-space)を次のように定義します。
   \[
   \mathcal{H}_{\mathbf{w},\theta}^+ = \mathcal{H}_{\mathbf{w},\theta} = \{x; \mathbf{w}^T x + \theta > 0\}, \quad \mathcal{H}_{\mathbf{w},\theta}^- = \{x; \mathbf{w}^T x + \theta < 0\}
   \]
@@ -173,9 +147,10 @@ f'(x) = f(x)(1 - f(x))
 \end{dfn}
 
 \begin{dfn}[Baire測度]
-  この定義は、符号付きBaire測度の概念を使用します。
-  Baire測度の概念を使用する主な理由は、コンパクト関数に対してよく分析できる（すべてのコンパクトの連続関数はBaire可測であり、
-  Baire空間のコンパクトの連続関数は、任意の有限Baire測度に関して可積分です）。
+Baire測度はBaire集合族\footnote{$ K\subset \mathbb{R}^{n}とし,\mathbf{Baire}集合族 \mathcal{B}とは, f\in C^{0}(K)=\{f\in C^{0}(K)|Supp\ f\ is\ compact\}に対し,\{x;f(x)\geq a\}の形で生成される \mathcal{\sigma-代数}として定義される。
+そのSuppを関数の台と言い、位相空間でK\subset \mathbb{R}^{n}とし、f:\ K\rightarrow \mathbb{R}(or\ \mathbb{C})について、関数の台とは、Supp\ f\coloneqq \overline{\{x\in K|f(x)\not = 0\}}\ (ただし上付きバーは閉包(Closure)を表す) $} $ \mathcal{B} $,\ 
+$K\subset \mathbb{R}^{n}$とし,Baire測度 $ \mu : \mathcal{B}\rightarrow [0,\infty]\ (or\ [0,\infty)\cup\{\infty\})\quad s.t.\ \forall C\subset K\ is\ compact,\ \mu (C)<\infty 。$
+なお、$K\subset \mathbb{R}^{n}$ のとき、Baire集合族はBorel集合族と一致する。特に、任意の有限Borel測度はBaire測度である。
 \end{dfn}
 次に、$I_n = [0, 1]^n = [0, 1] \times \cdots \times [0, 1]$ としたとき、$I_n$ 上の有限の符号付き正則Baire測度の空間を $M(I_n)$ とする.
 \begin{lem}
@@ -185,17 +160,28 @@ f'(x) = f(x)(1 - f(x))
 \mu(P_{\mathbf{w},\theta}) = 0, \quad \mu(\mathcal{H}_{\mathbf{w},\theta}) = 0, \quad \forall \mathbf{w} \in \mathbb{R}^n, \, \theta \in \mathbb{R},
 \]
 そのとき $\mu = 0$ です。
+\pagebreak
+
+\begin{exercise}
+  \[
+\mu(P_{\mathbf{w},\theta}) = 0, \quad \mu(\mathcal{H}_{\mathbf{w},\theta}) = 0, \quad (\forall \mathbf{w} \in \mathbb{R}^n, \, \theta \in \mathbb{R})\implies \mu = 0.\]
+上記の補題を証明せよ。
+\end{exercise}
 
 \begin{proof} 
-$\mathbf{w} \in \mathbb{R}^n$ を固定します。次のように定義された線形関数 $F : L^\infty(\mathbb{R}) \to \mathbb{R}$ を考えます。
-
+$\mathbf{w} \in \mathbb{R}^n$ を固定します。次のように定義された線形関数 $F : L^\infty(\mathbb{R})\footnotemark[2] \to \mathbb{R}$ を考えます。
+\footnotetext[2]{実数集合 $\mathbb{R}$上で、$L^{\infty}(\mathbb{R})$ は「本質的に有界な」可測関数によって構成される空間である。$f \in L^{\infty}(\mathbb{R})$ に対して、そのノルムを
+\[
+\|f\|_{\infty} = \operatorname{ess\,sup}_{x \in \mathbb{R}} |f(x)| = \inf\{M : |f(x)| \leq M \text{ a.e.}\}
+\]
+と定義する。このノルムはバナッハ空間の三角不等式を満たし、また $L^{\infty}(\mathbb{R})$ を完備ノルム空間（すなわちバナッハ）にする。}
 \[
 F(h) = \int_{I_n} h(\mathbf{w}^T x) d\mu(x),
 \]
-ここで $L^\infty(\mathbb{R})$ はほぼ至る所($\mathrm{almost everywhere}\iff$ a.e.)で有界な関数の空間を表します。\\
+ここで $L^\infty(\mathbb{R})$ はほぼ至る所($\mathrm{almost\ everywhere}\iff$ a.e.)で有界な関数の空間を表します。\\
 $L^{\infty}(\mathbb{R})$ の元 $h$ は、$\mathbb{R}$ 上の有界な関数であり、$||h||_\infty = \text{ess}\displaystyle\sup_{x \in \mathbb{R}} |h(x)|\footnote{ess supを本質的上限と呼ばれ、定義は以下のようになります。
 \[
-(X,\mathcal{F},\mu) \text{ を測度空間, } f:X \to \mathbb{R} \text{ を可測関数とする. このとき,}
+(X,\mathcal{A},\mu) \text{ を測度空間, } f:X \to \mathbb{R} \text{ を可測関数とする. このとき,}
 \quad\text{ess } \sup f = \inf \{ a \in \mathbb{R} \mid \mu(f > a) = 0 \}\]}
 <\infty$ で定義されます。\\
 $h\leq ||h||_\infty$ により、
@@ -203,7 +189,7 @@ $h\leq ||h||_\infty$ により、
 |F(h)| = \left| \int_{I_n} h(\mathbf{w}^T x) d\mu(x) \right| \leq ||h||_\infty \left|\int_{I_n} d\mu(x)\right| =  |\mu(I_n)| \cdot ||h||_\infty 
 \]
 ここで $\mu$ が有限測度である。
-次に $h = 1_{[\theta,\infty)}$ とします。すなわち、$h$ は区間 $[\theta,\infty)$ の指示関数\footnote{指示函数$1_{[\theta,\infty)}(x)$の定義は
+次に $h = 1_{[\theta,\infty)}$ とします。すなわち、$h$ は区間 $[\theta,\infty)$ の指示関数\footnote{指示函数(indicator function)または特性関数(characteristic function)\ $1_{[\theta,\infty)}(x)$の定義は
 \[
 1_{[\theta,\infty)}(x) = 
 \begin{cases}
@@ -213,13 +199,15 @@ $h\leq ||h||_\infty$ により、
 \end{cases}
 \]}であり、$\mathbf{w}^T x\geq\theta$。すると、
 
+
 \begin{align}
   F(h) = \int_{I_n} h(\mathbf{w}^T x) d\mu(x) &= \int_{\{\mathbf{w}^T x \geq \theta\}} \mathbf{1} d\mu(x)  +\int_{\{\mathbf{w}^T x < \theta\}} 0d\mu(x) \notag\\
   &= \int_{\{\mathbf{w}^T x \geq \theta\}} \mathbf{1}d\mu(x) + 0 \notag\\
   &=\mu(\mathcal{P}_{\mathbf{w},\theta}\cup\mathcal{H}_{\mathbf{w},\theta}^+) \notag\\
-  &= \mu(\mathcal{P}_{\mathbf{w},\theta}) + \mu(\mathcal{H}_{\mathbf{w},\theta}^+) \notag\\
+  &= \mu(\mathcal{P}_{\mathbf{w},\theta}) + \mu(\mathcal{H}_{\mathbf{w},\theta}^+)\footnotemark[4]\notag\\
   &= 0\notag
 \end{align}
+\footnotetext[4]{測度$\mu$の測度の性質の有限加法性によるためである.}
 同様に$h = 1_{(\theta,\infty)}$を考えると、
 
 \begin{align}
@@ -236,7 +224,7 @@ $$
 0, & x \notin [a,b]
 \end{cases}
 $$
-\textbf{閉区間の場合：}
+\boxed{\textbf{閉区間の場合：}}
 
 \[
 1_{[a,b]}(x) = 1_{[a,\infty)}(x) - 1_{(b,\infty)}(x).
@@ -266,19 +254,25 @@ $$
     \end{align*}
 \end{itemize}
 
-同様に、開区間について：
+同様に、\boxed{\textbf{開区間の場合：}}
 
 \[
 1_{(a,b)}(x) = 1_{[a,\infty)}(x) - 1_{(b,\infty)}(x).
 \]
 
-したがって、$F$の線形性\footnote{Fの線形性とは、$F(\alpha f+\beta g)=\alpha F(f)+\beta F(g) \quad (\alpha ,\beta\in \mathbb{R})$}より、次のように書けます。
+したがって、$F$の線形性\footnote{関数Fの線形性とは、$F(\alpha f+\beta g)=\alpha F(f)+\beta F(g) \quad (\alpha ,\beta\in \mathbb{R})$}より、次のように書けます。
 \[
 F\left(\sum_{i=1}^N \alpha_i 1_{J_i}\right) = \sum_{i=1}^N \alpha_i F(1_{J_i}) = 0,
 \]
-ここで $\alpha_i \in \mathbb{R}$、$J_i$ は区間です。シンプル関数が $L^\infty(\mathbb{R})$ において稠密であるため、$F' = 0$ が成り立ちます。よって、任意の固定された $f \in L^\infty(\mathbb{R})$ に対して、$(s_n)_n$ が存在して $s_n \to f\quad (n\to\infty)$ となります。
+ここで $\alpha_i \in \mathbb{R}$、$J_i$ は区間です。単関数\footnote{\textbf{Appendix A}を参照してください}が $L^\infty(\mathbb{R})$ において稠密\footnotemark[8]であるため、$F' = 0$ が成り立ちます。よって、任意の固定された $f \in L^\infty(\mathbb{R})$ に対して、$(s_n)_n$ が存在して $s_n \to f\quad (n\to\infty)$ となります。
 $F$ が有界かつ連続\footnote{連続関数ならば、関数記号と極限が交換可能である.その証明は$\displaystyle\epsilon - \delta$論法を使えば、簡単に証明できる}であるので、以下が成り立ちます。
-
+\footnotetext[8]{位相空間 $X$ の部分集合 $A$ が $X$ において \textbf{稠密(Dense)} であるとは，
+$X$ の各元 $x$ に対し，$x$ の任意の近傍が $A$ の元を少なくとも一つ含むことをいう。
+同じことだが，$A$ が $X$ において稠密であるのは，
+$A$ を含む $X$ の閉集合が $X$ 自身しかないときであり，かつそのときに限る。
+これは $A$ の閉包 $\overline{A}$ が $X$ に一致すると言ってもよい。
+あるいは，$A$ の補集合の内部が空であるともいえる。位相空間 $X$ の \textbf{稠密度(Density)} とは，
+$X$ の稠密部分集合の最小濃度をいう。}
 \[
 F(f) = F\left(\lim_{n \to \infty} s_n\right) = \lim_{n \to \infty} F(s_n) = 0.
 \]
@@ -304,6 +298,9 @@ $f(x_1) = f(x_2) \implies x_1 = x_2$}性質から、$\mu = 0$ が成り立つ。
 
   
 \end{lem}
+
+
+
 
 \begin{prop}
 任意の連続シグモイド関数は、$M(I_n)$ のすべての測度 $\mu$ に対して区別可能である。
@@ -340,7 +337,7 @@ $\mu=0$を証明すればいい。まず、以下の関数を構成すると、
 \]
 
 $\sigma_\lambda(x) \to \gamma(x)\quad (\lambda\to\infty)$ は $\mathbb{R}^n$ 上で各点収束し、また $\sigma$ はシグモイド関数であるため、値は有限区間にある。
-有界収束定理より、極限と積分の交換ができる。よって、
+有界収束定理\cite{lang1993real}より、極限と積分の交換ができる。よって、
 \begin{align}
   \lim_{\lambda \to \infty} \int_{I_n} \sigma_\lambda(x) d\mu(x) &= \int_{I_n} \gamma(x) d\mu(x)\notag\\
   &= \int_{\mathcal{H}^+_{\mathbf{w},\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{H}^-_{\mathbf{w},\theta}} \gamma(x) d\mu(x) + \int_{\mathcal{P}_{\mathbf{w},\theta}} \gamma(x) d\mu(x) \notag\\
@@ -371,5 +368,15 @@ $\phi \to +\infty$ とすると、$\sigma = \dfrac{1}{1+e^{-\phi}}\to 1$より�
 であることから、式\eqref{eq3}により、$\mu$は$\mathbb{R}^n$における全ての半空間でなくなる。測度 $\mu$ は零測度、つまり $\mu = 0$ である。したがって、$\sigma$ は区別可能である。
 \end{proof} 
 \end{prop}
+\appendix
+\include{Appendix-ML}
+\bibliographystyle{plain}
+\bibliography{sanko.bib}
+
+
+
+
+
+
 
 \end{document}
