@@ -1,6 +1,6 @@
 \section{\\単関数(Simple Function)}
 
-\begin{dfn}[単関数\cite{kingman1966introduction}]
+\subsection{\\単関数\cite{kingman1966introduction}}
   単関数とは可測集合の指示関数の有限な線型結合のことである．
   より正確に述べれば，集合 $X$ 上の実数値単関数とは，
   $1_{A_i}$ を $A_i$ の指示関数として，$X$ の有限分割
@@ -28,10 +28,9 @@
   \int_X f \, d\mu \;:=\; \sum_{k=1}^{n} a_k \mu(A_k)
   \qquad\bigl(f = \sum_{k} a_k\,1_{A_k}\bigr)
 \]
-と定める。
-\end{dfn}% the \\ insures the section title is centered below the phrase: AppendixA
+と定める。% the \\ insures the section title is centered below the phrase: AppendixA
 
-\begin{lem}[ルベーグ積分との関係\cite{ito1963lebesgue}]
+\subsection{ルベーグ積分との関係\cite{ito1963lebesgue}}
   どのような非負の可測関数 $f: X \to \mathbb{R}^{+}$ であっても、単調増加な非負の単関数の列の各点収束の極限として与えられる。実際、$f$ を測度空間 $(X, \Sigma, \mu)$ 上定義される、上述のような非負可測関数とする。各 $n \in \mathbb{N}$ に対し、$f$ の値域を、$2^{2n} + 1$ 個の区間で、その内の $2^{2n}$ 個が長さ $2^{-n}$ を持つようなものに区分する。すなわち、各 $n$ に対して、
   \[
   I_{n,k} = \left[ \frac{k-1}{2^n}, \frac{k}{2^n} \right) \quad \text{for } k = 1, 2, \ldots, 2^{2n}
@@ -51,5 +50,19 @@
   f_n = \sum_{k=1}^{2^{2n}+1} \frac{k-1}{2^n} \mathbf{1}_{A_{n,k}}
   \]
   は、$n \to \infty$ としたとき、$f$ へと各点収束する。$f$ が有界であるなら、その収束は一様収束である。
-  
-\end{lem}
+
+\subsection{\\本質的上限と本質下限の性質}
+$(X, \mathcal{F}, \mu) \text{を測度空間}, \, f: X \rightarrow \mathbb{R} \text{を可測関数とす}
+\text{る。このとき,}$
+
+
+$
+\\
+1. \text{ess sup } f = - \text{ess inf}(-f).\\
+2. \inf f \leq \text{ess inf } f \leq \text{ess sup } f \leq \sup f.\\
+3. g: X \rightarrow \mathbb{R} \text{も可測関数で}, \, f = g, \, \text{a.e. (ほとん}
+   \text{どいたるところ)とするとき}, \, \text{ess sup } f = 
+   \text{ess sup } g.\\
+4. h: \mathbb{R} \rightarrow \mathbb{R} \text{が連続関数であるとき},
+   \text{ess sup } h = \sup h, \, \text{ess inf } h = \inf h.
+$

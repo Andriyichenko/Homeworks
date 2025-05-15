@@ -148,7 +148,7 @@ f'(x) = f(x)(1 - f(x))
 
 \begin{dfn}[Baire測度]
 Baire測度はBaire集合族\footnote{$ K\subset \mathbb{R}^{n}とし,\mathbf{Baire}集合族 \mathcal{B}とは, f\in C^{0}(K)=\{f\in C^{0}(K)|Supp\ f\ is\ compact\}に対し,\{x;f(x)\geq a\}の形で生成される \mathcal{\sigma-代数}として定義される。
-そのSuppを関数の台と言い、位相空間でK\subset \mathbb{R}^{n}とし、f:\ K\rightarrow \mathbb{R}(or\ \mathbb{C})について、関数の台とは、Supp\ f\coloneqq \overline{\{x\in K|f(x)\not = 0\}}\ (ただし上付きバーは閉包(Closure)を表す) $} $ \mathcal{B} $,\ 
+そのSuppを関数の台と言い、位相空間でK\subset \mathbb{R}^{n}とし、f:\ K\rightarrow \mathbb{R}(or\ \mathbb{C})について、関数の台とは、Supp\ f\coloneqq \overline{\{x\in K|f(x)\not = 0\}}=\overline{(K-f^{-1}(0))}\ (ただし上付きバーは閉包(Closure)を表す) $} $ \mathcal{B} $,\ 
 $K\subset \mathbb{R}^{n}$とし,Baire測度 $ \mu : \mathcal{B}\rightarrow [0,\infty]\ (or\ [0,\infty)\cup\{\infty\})\quad s.t.\ \forall C\subset K\ is\ compact,\ \mu (C)<\infty 。$
 なお、$K\subset \mathbb{R}^{n}$ のとき、Baire集合族はBorel集合族と一致する。特に、任意の有限Borel測度はBaire測度である。
 \end{dfn}
@@ -169,12 +169,12 @@ $K\subset \mathbb{R}^{n}$とし,Baire測度 $ \mu : \mathcal{B}\rightarrow [0,\i
 \end{exercise}
 
 \begin{proof} 
-$\mathbf{w} \in \mathbb{R}^n$ を固定します。次のように定義された線形関数 $F : L^\infty(\mathbb{R})\footnotemark[2] \to \mathbb{R}$ を考えます。
-\footnotetext[2]{実数集合 $\mathbb{R}$上で、$L^{\infty}(\mathbb{R})$ は「本質的に有界な」可測関数によって構成される空間である。$f \in L^{\infty}(\mathbb{R})$ に対して、そのノルムを
+$\mathbf{w} \in \mathbb{R}^n$ を固定します。次のように定義された線形関数 $F : L^\infty(\mathbb{R})\footnotemark \to \mathbb{R}$ を考えます。
+\footnotetext{実数集合 $\mathbb{R}$上で、$L^{\infty}(\mathbb{R})$ は「本質的に有界な」可測関数によって構成される空間である。$f \in L^{\infty}(\mathbb{R})$ に対して、そのノルムを
 \[
 \|f\|_{\infty} = \operatorname{ess\,sup}_{x \in \mathbb{R}} |f(x)| = \inf\{M : |f(x)| \leq M \text{ a.e.}\}
 \]
-と定義する。このノルムはバナッハ空間の三角不等式を満たし、また $L^{\infty}(\mathbb{R})$ を完備ノルム空間（すなわちバナッハ）にする。}
+と定義する。このノルムはバナッハ空間の三角不等式を満たし、また $L^{\infty}(\mathbb{R})$ を完備ノルム空間（すなわちバナッハ空間）にする。}
 \[
 F(h) = \int_{I_n} h(\mathbf{w}^T x) d\mu(x),
 \]
@@ -204,10 +204,10 @@ $h\leq ||h||_\infty$ により、
   F(h) = \int_{I_n} h(\mathbf{w}^T x) d\mu(x) &= \int_{\{\mathbf{w}^T x \geq \theta\}} \mathbf{1} d\mu(x)  +\int_{\{\mathbf{w}^T x < \theta\}} 0d\mu(x) \notag\\
   &= \int_{\{\mathbf{w}^T x \geq \theta\}} \mathbf{1}d\mu(x) + 0 \notag\\
   &=\mu(\mathcal{P}_{\mathbf{w},\theta}\cup\mathcal{H}_{\mathbf{w},\theta}^+) \notag\\
-  &= \mu(\mathcal{P}_{\mathbf{w},\theta}) + \mu(\mathcal{H}_{\mathbf{w},\theta}^+)\footnotemark[4]\notag\\
+  &= \mu(\mathcal{P}_{\mathbf{w},\theta}) + \mu(\mathcal{H}_{\mathbf{w},\theta}^+)\footnotemark\notag\\
   &= 0\notag
 \end{align}
-\footnotetext[4]{測度$\mu$の測度の性質の有限加法性によるためである.}
+\footnotetext{測度$\mu$の測度の性質の有限加法性によるためである.}
 同様に$h = 1_{(\theta,\infty)}$を考えると、
 
 \begin{align}
@@ -264,15 +264,14 @@ $$
 \[
 F\left(\sum_{i=1}^N \alpha_i 1_{J_i}\right) = \sum_{i=1}^N \alpha_i F(1_{J_i}) = 0,
 \]
-ここで $\alpha_i \in \mathbb{R}$、$J_i$ は区間です。単関数\footnote{\textbf{Appendix A}を参照してください}が $L^\infty(\mathbb{R})$ において稠密\footnotemark[8]であるため、$F' = 0$ が成り立ちます。よって、任意の固定された $f \in L^\infty(\mathbb{R})$ に対して、$(s_n)_n$ が存在して $s_n \to f\quad (n\to\infty)$ となります。
-$F$ が有界かつ連続\footnote{連続関数ならば、関数記号と極限が交換可能である.その証明は$\displaystyle\epsilon - \delta$論法を使えば、簡単に証明できる}であるので、以下が成り立ちます。
-\footnotetext[8]{位相空間 $X$ の部分集合 $A$ が $X$ において \textbf{稠密(Dense)} であるとは，
+ここで $\alpha_i \in \mathbb{R}$、$J_i$ は区間です。単関数\footnote{\textbf{Appendix A}を参照してください}が $L^\infty(\mathbb{R})$ において稠密\footnote{位相空間 $X$ の部分集合 $A$ が $X$ において \textbf{稠密(Dense)} であるとは，
 $X$ の各元 $x$ に対し，$x$ の任意の近傍が $A$ の元を少なくとも一つ含むことをいう。
 同じことだが，$A$ が $X$ において稠密であるのは，
 $A$ を含む $X$ の閉集合が $X$ 自身しかないときであり，かつそのときに限る。
 これは $A$ の閉包 $\overline{A}$ が $X$ に一致すると言ってもよい。
 あるいは，$A$ の補集合の内部が空であるともいえる。位相空間 $X$ の \textbf{稠密度(Density)} とは，
-$X$ の稠密部分集合の最小濃度をいう。}
+$X$ の稠密部分集合の最小濃度をいう。}であるため、$F' = 0$ が成り立ちます。よって、任意の固定された $f \in L^\infty(\mathbb{R})$ に対して、$(s_n)_n$ が存在して $s_n \to f\quad (n\to\infty)$ となります。
+$F$ が有界かつ連続\footnote{連続関数ならば、関数記号と極限が交換可能である.その証明は$\displaystyle\epsilon - \delta$論法を使えば、簡単に証明できる}であるので、以下が成り立ちます。
 \[
 F(f) = F\left(\lim_{n \to \infty} s_n\right) = \lim_{n \to \infty} F(s_n) = 0.
 \]
