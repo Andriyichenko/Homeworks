@@ -30,6 +30,3 @@ The content is mainly organized for learning, review, and as a reference for oth
 
 2. LaTeX書類のビルドには、`beamer`パッケージを含むLaTeX環境が必要です。  
    To build the LaTeX documents, you need a LaTeX environment with the `beamer` package.
-
-   ```bash  
-   pdflatex seminar_sample.tex  
