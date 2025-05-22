@@ -11,7 +11,7 @@ The content is mainly organized for learning, review, and as a reference for oth
 
 ## 📝 ディレクトリ構成 | Directory Structure
 
-- `/seminars`  
+- `/semi`  
   セミナー発表のスライドや資料  
   Seminar presentation slides and materials
 
@@ -19,7 +19,7 @@ The content is mainly organized for learning, review, and as a reference for oth
   各種講義課題のレポートや解答例  
   Reports and sample solutions for various course assignments
 
-- `/beamer_sources`  
+- `/slides`  
   Beamerで作成したLaTeXプレゼン用ソースコード  
   LaTeX source code for presentations made with Beamer
 
