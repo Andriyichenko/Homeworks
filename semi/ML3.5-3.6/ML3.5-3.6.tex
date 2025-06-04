@@ -5,16 +5,16 @@
 \maketitle
 %%%概要を出力したい人はこのように記述
 \vspace{-0.4cm}
-% \begin{figure}[H] 
-%   \centering
-%   \begin{tikzpicture}[remember picture, overlay]
-%       \node[anchor=north east] at (current page.north east) {
-%           \includegraphics[width=2cm]{pics/qr.png} 
-%       };
-%       \node[anchor=north east, yshift=-2cm] at (current page.north east) {デジタル版はここ};
-%   \end{tikzpicture}
-%   \label{fig:my_label}
-% \end{figure}
+\begin{figure}[H] 
+  \centering
+  \begin{tikzpicture}[remember picture, overlay]
+      \node[anchor=north east] at (current page.north east) {
+          \includegraphics[width=2cm]{qr3.5.png} 
+      };
+      \node[anchor=north east, yshift=-2cm] at (current page.north east) {デジタル版はここ};
+  \end{tikzpicture}
+  \label{fig:my_label}
+\end{figure}
 \section{\textbf{Cross-Entropy}}
 \thispagestyle{plain}
 \begin{dfn}[\textbf{交差エントロピー(クロスエントロピー)}]\label{def:cross-entropy}
