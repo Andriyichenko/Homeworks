@@ -1,0 +1,103 @@
+\documentclass[dvipdfmx]{jarticle}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, intersections, calc, arrows.meta, math, through}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,breakable}
+\usepackage{enumerate}
+\usepackage{mathtools}
+\usepackage{otf}
+\usepackage{xspace}
+\usepackage{newpxtext}
+\usepackage[utf8]{inputenc} %中国語コンパイル環境-cjkホットショット
+\usepackage{CJKutf8} %中国語コンパイル環境
+\usepackage{okumacro} %漢字ruby
+\renewcommand{\abstractname}{注意事項}
+\newtagform{textbf}[	extbf]{[}{]}
+\usetagform{textbf}
+\newcommand*{\ie}{\textbf{\textit{i.e.}}\@\xspace}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newtcbtheorem[]{reidai}{例題}
+{fonttitle=\gtfamily\sffamily\bfseries\upshape\large,
+colframe=black,colback=black!15!white,
+rightrule=1pt,leftrule=1pt,bottomrule=2pt,
+colbacktitle=black,theorem style=standard,breakable,arc=10pt}
+{tha}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\newtheoremstyle{mystyle}%
+  {}%                      % 上部スペース
+  {}%                      % 下部スペース
+  {}%                      % 本文フォント
+  {}%                      % 1行目のインデント量
+  {\bfseries}%             % 見出しフォント
+  :%                       % 見出し後の句読点
+  { }%                     % 見出し後のスペース
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\theoremstyle{mystyle}
+% \setcounter{section}{0}
+% \stepcounter{section}
+% セクションカウンターを使用するが、表示はしない新しいセクションコマンドを作成
+\newtheorem{dfn}{\texttt{Def.}}[section]
+\newtheorem{exm}[dfn]{\texttt{Ex.}}
+\newtheorem{prop}[dfn]{\texttt{Prop.}}
+\newtheorem{lem}[dfn]{\texttt{Lem.}}
+\newtheorem{thm}[dfn]{\texttt{Thm.}}
+\newtheorem{cor}[dfn]{\texttt{Cor.}}
+\newtheorem{rem}[dfn]{\texttt{Rem.}}
+\newtheorem{fact}[dfn]{\texttt{Fact}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\usepackage{lipsum} % 用于生成示例文本
+\usepackage{float} % 强制浮动
+\usepackage{tikz} % 用于定位
+%排版
+\newcommand{\kai}%解答
+{\noindent
+\begin{tikzpicture}[scale=0.2, baseline=2.8pt]
+\draw (3.3,1) node{\large\textgt{解 答}};
+\draw[thick, rounded corners=3pt,] (0,0)--(6.5,0)--(6.5,2.2)--(0,2.2)--cycle;
+\end{tikzpicture};}
+\newcommand{\shomei}%証明
+{\noindent
+\begin{tikzpicture}[scale=0.2, baseline=2.8pt]
+\draw (3.3,1) node{\textgt{証 明}};
+\draw[double,thick,rounded corners=3pt,] (0,0)--(6.5,0)--(6.5,2.2)--(0,2.2)--cycle;
+\end{tikzpicture};}
+%補足
+\newcommand{\hosoku}{\noindent
+\begin{tikzpicture}[scale=0.2, baseline=2.8pt]
+\draw (6,1) node{\large\textgt{補足}};
+\fill (0,1)--(1,0)--(2,1)--(1,2)--cycle;
+\fill[gray] (1,1)--(2,0)--(3,1)--(2,2)--cycle;
+\fill (2,1)--(3,0)--(4,1)--(3,2)--cycle;
+\fill (10,1)--(11,0)--(12,1)--(11,2)--cycle;
+\fill[gray] (9,1)--(10,0)--(11,1)--(10,2)--cycle;
+\fill (8,1)--(9,0)--(10,1)--(9,2)--cycle;
+\end{tikzpicture};}
+%注意
+\newcommand{\chui}{\noindent
+\begin{tikzpicture}[scale=0.2, baseline=2.8pt]
+\fill (0,0)--(6.5,0)--(6.5,2.2)--(0,2.2);
+\draw (3.3,1) node[white]{\large\textgt{注意！}};
+\draw[thick] (0,0)--(6.5,0)--(6.5,2.2)--(0,2.2)--cycle;
+\end{tikzpicture};}
+\title{\vspace{-2cm }\textbf{\Large オッペンハイマーの科学倫理に関する意見}}  %タイトル
+\author{\texttt{YI Ran} - $\mathnormal{21122200512}$\\ \texttt{andreyi@outlook.jp}}  %著者名
+\date{}  %日付
+\begin{document}
+\maketitle
+
+\section*{背景}
+戦後、オッペンハイマーは水素爆弾の開発と核拡散に反対し、国際的な核管理（1946年のバルーク計画など）を支持した。
+これにより、彼は政治家たちと対立することになり、1954年に「共産主義シンパ」として告発され、1954年の「共産主義同情者」疑惑によるセキュリティクリアランス剥奪され、政治的迫害を受けた。
+\section*{意見}
+この背景を踏まえて、私の意見では、政治は確かに科学を「勝ち取る」ことが多いが、それは人類全体にとって損失だと思う。\\
+\indent
+まず、権力の非対称性が問題である。科学は証拠と論理に基づくが、政治は権力とイデオロギーに依存する。「我は死神なり、世界の破壊者なり」と呟き、自身が開発した原子爆弾の破壊力に衝撃を受けたオッペンハイマーが、科学的理性に基づいて核不拡散を主張したにもかかわらず、「国家安全保障」という名目で抑圧されたのは、短期的利益を優先し、長期的な倫理的リスクを無視する典型例であると考えている。\\
+\indent
+次に、科学者が政治に屈せず声を上げることは倫理の核心である。しかし現実には、彼の失敗が示すように、個人の倫理だけでは不十分であった。当時の制度的な保護が不足していることが根本的な問題だと思っている。\\
+\indent
+とはいえ、完全に絶望的というわけではない。オッペンハイマーの遺産としては、後の核不拡散条約などに影響を与えた。私は、科学が政治を導く道は、データに基づく最適な政策決定を通じて実現可能だと信じている。
+
+
+\end{document}
